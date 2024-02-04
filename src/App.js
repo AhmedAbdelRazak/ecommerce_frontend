@@ -42,6 +42,10 @@ import ParentMain from "./Admin/Parent/ParentMain";
 import AttributesMain from "./Admin/Attributes/AttributesMain";
 import ProductMain from "./Admin/Product/ProductMain";
 import StoreSettingsMain from "./Admin/StoreSettings/StoreSettingsMain";
+import singleparent from  "./pages/singleparent";
+import bukishaproduct from  "./pages/bukishaproduct";
+import cartdesign from  "./pages/cartdesign";
+
 
 //Admin Management
 
@@ -116,6 +120,9 @@ const App = () => {
 
 			<Switch>
 				<Route path='/signin' exact component={Login} />
+				<Route path='/singleparent' exact component={singleparent} />
+				<Route path='/bukishaproduct' exact component={bukishaproduct} />
+				<Route path='/cartdesign' exact component={cartdesign} />
 
 				<Route
 					path='/'
@@ -128,8 +135,8 @@ const App = () => {
 				<Route path='/return-exchange-policy' exact component={RetExchPolicy} />
 				<Route path='/user/wishlist' exact component={UserWishlist} />
 				<Route path='/signup' exact component={Register} />
-				<Route
-					path='/our-products'
+				<Route 
+				path='/our-products'
 					exact
 					component={() => <ShopPageMain chosenLanguage={language} />}
 				/>

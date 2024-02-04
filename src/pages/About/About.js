@@ -90,6 +90,7 @@ const About = () => {
 				</div>
 			</div>
 		</AboutPageWrapper>
+		
 	);
 };
 

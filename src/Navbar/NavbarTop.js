@@ -598,7 +598,7 @@ const NavbarTop = ({history, language, setLanguage, chosenLanguage}) => {
 					}}
 				>
 					<div className='infiniteAppsLogo'>
-						<img className='imgLogo' src={finalLogoUrl} alt='Next Day Logo' />
+						<img className='imgLogo' src="https://cdn.builder.io/api/v1/image/assets/TEMP/fd00d859c0194f4482570a15112ec912d09812c1226a3caff9a86fc658348f3e?apiKey=cdf657c2c4874b31988402beb4ed56ad&" alt='Next Day Logo' />
 					</div>
 				</Link>
 			</div>
@@ -855,11 +855,11 @@ const NavbarTop = ({history, language, setLanguage, chosenLanguage}) => {
 				) : null}
 
 				<div
-					className='col-2  my-auto  cellPhoneLogo p-0'
+					className='col-2  my-auto  cellPhoneLogo p-0' 
 					// style={{ border: "1px black solid" }}
 				>
 					<Link to='/'>
-						<img className='imgLogo2' src={finalLogoUrl} alt='Infinite Apps' />
+						<img className='imgLogo2'  alt='Infinite Apps' src="https://cdn.builder.io/api/v1/image/assets/TEMP/fd00d859c0194f4482570a15112ec912d09812c1226a3caff9a86fc658348f3e?apiKey=cdf657c2c4874b31988402beb4ed56ad&"  />
 					</Link>
 				</div>
 
@@ -978,12 +978,12 @@ const Nav = styled.nav`
 	}
 
 	/* .imgLogo {
-			width: 150px;
-			height: 79px;
-			margin-top: 0px;
-			margin-bottom: 0px;
-			margin-left: 0px;
-			border-radius: 15px;
+			// width: 150px;
+			// height: 79px;
+			// margin-top: 0px;
+			// margin-bottom: 0px;
+			// margin-left: 0px;
+			// border-radius: 15px;
 		} */
 
 	.menu {
@@ -1112,7 +1112,7 @@ const Nav = styled.nav`
 		}
 
 		.imgLogo2 {
-			width: 90%;
+			width: 85%;
 			padding: 0px !important;
 			margin-top: 0px;
 			margin-bottom: 0px;
