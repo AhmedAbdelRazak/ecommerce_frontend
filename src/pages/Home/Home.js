@@ -1830,7 +1830,7 @@ const Img38 = styled.img`
   aspect-ratio: 4.17;
   object-fit: auto;
   object-position: center;
-  width: 80px;
+  width: 90px;
   margin-right: 523px;
   @media (max-width: 991px) {
     margin-right: 10px;
