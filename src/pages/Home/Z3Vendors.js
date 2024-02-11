@@ -91,14 +91,18 @@ const Imagebrands = styled.img`
 	aspect-ratio: 0.68;
 	object-fit: auto;
 	object-position: center;
-	width: 24px;
+	width: 100%;
+	height: 63px;
 	align-self: center;
+	object-fit: cover;
 `;
 
 const Type = styled.div`
 	justify-content: center;
 	font-family: Poppins, sans-serif;
 	margin-top: 10px;
+	font-size: 15px;
+	text-align: center;
 `;
 
 // const Divider = styled.div`

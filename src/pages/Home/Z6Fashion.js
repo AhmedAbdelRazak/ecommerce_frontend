@@ -8,10 +8,11 @@ const Z6Fashion = () => {
 	const [records] = useState(12); // Adjusted to display 3 products per "page"
 
 	const gettingNewArrivalProducts = () => {
-		getPaginatedProducts(page, records, "fashion").then((data) => {
+		getPaginatedProducts(page, records, "Fashion").then((data) => {
 			if (data && data.error) {
 				console.log("Error fetching new arrival products:", data.error);
 			} else {
+				console.log(data.data, "Data.data");
 				if (data && data.data) {
 					setFashionProducts((prevProducts) => [...prevProducts, ...data.data]);
 				}
@@ -42,32 +43,42 @@ const Z6Fashion = () => {
 						</DOV34>
 					</DOV33>
 					<ProductsContainer>
-						{fashionProducts.map((product, i) => {
-							const truncatedDescription =
-								product.description.length > 20
-									? `${product.description.slice(0, 20)}...`
-									: product.description;
-							const productImage = product.addVariables
-								? product.productAttributes.productImages[0].url
-								: product.thumbnailImage[0].images[0].url;
-							const productPrice = product.addVariables
-								? product.productAttributes.priceAfterDiscount
-								: product.priceAfterDiscount;
+						{fashionProducts &&
+							fashionProducts.map((product, i) => {
+								const truncatedDescription =
+									product.description.length > 20
+										? `${product.description.slice(0, 20)}...`
+										: product.description;
+								const productImage =
+									product &&
+									product.addVariables &&
+									product.productAttributes &&
+									product.productAttributes.productImages &&
+									product.productAttributes.productImages[0]
+										? product.productAttributes &&
+											product.productAttributes.productImages[0].url
+										: product.thumbnailImage[0] &&
+											product.thumbnailImage[0].images &&
+											product.thumbnailImage[0].images[0].url;
+								const productPrice = product.addVariables
+									? product.productAttributes &&
+										product.productAttributes.priceAfterDiscount
+									: product.priceAfterDiscount;
 
-							return (
-								<ProductWrapper key={i}>
-									<ProductCard>
-										<ProductImage
-											loading='lazy'
-											src={productImage}
-											alt='Product Image'
-										/>
-									</ProductCard>
-									<ProductName>{truncatedDescription}</ProductName>
-									<ProductPrice>{`${productPrice} KD`}</ProductPrice>
-								</ProductWrapper>
-							);
-						})}
+								return (
+									<ProductWrapper key={i}>
+										<ProductCard>
+											<ProductImage
+												loading='lazy'
+												src={productImage}
+												alt='Product Image'
+											/>
+										</ProductCard>
+										<ProductName>{truncatedDescription}</ProductName>
+										<ProductPrice>{`${productPrice} KD`}</ProductPrice>
+									</ProductWrapper>
+								);
+							})}
 					</ProductsContainer>
 					<Seemore onClick={handlePageChange}>
 						<SeemoreText>SEE MORE</SeemoreText>

@@ -8,7 +8,7 @@ const Z5Birthday = () => {
 	const [records] = useState(8); // Adjusted to display 3 products per "page"
 
 	const gettingNewArrivalProducts = () => {
-		getPaginatedProducts(page, records, "birthday").then((data) => {
+		getPaginatedProducts(page, records, "Gifts").then((data) => {
 			if (data && data.error) {
 				console.log("Error fetching new arrival products:", data.error);
 			} else {
