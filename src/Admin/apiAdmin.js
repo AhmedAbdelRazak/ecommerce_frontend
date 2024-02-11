@@ -420,6 +420,16 @@ export const removeProduct = (productId, userId, token) => {
 
 /**End Of Product */
 
+export const getVendors = () => {
+	return fetch(`${process.env.REACT_APP_API_URL}/vendors`, {
+		method: "GET",
+	})
+		.then((response) => {
+			return response.json();
+		})
+		.catch((err) => console.log(err));
+};
+
 /**Orders Management */
 
 export const createOrder = (userId, token, createOrderData) => {
@@ -1469,6 +1479,108 @@ export const receiveNew = (userId, token, receiving) => {
 
 export const getReceivingLogs = (token) => {
 	return fetch(`${process.env.REACT_APP_API_URL}/receivings`, {
+		method: "GET",
+		headers: {
+			// content type?
+			"Content-Type": "application/json",
+			Accept: "application/json",
+			Authorization: `Bearer ${token}`,
+		},
+	})
+		.then((response) => {
+			return response.json();
+		})
+		.catch((err) => console.log(err));
+};
+
+export const createHomePage = (userId, token, home) => {
+	return fetch(`${process.env.REACT_APP_API_URL}/hero/create/${userId}`, {
+		method: "POST",
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/json",
+			Authorization: `Bearer ${token}`,
+		},
+		body: JSON.stringify(home),
+	})
+		.then((response) => {
+			return response.json();
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
+
+export const updateHomePage = (homeId, userId, token, home) => {
+	return fetch(`${process.env.REACT_APP_API_URL}/hero/${homeId}/${userId}`, {
+		method: "PUT",
+		headers: {
+			// content type?
+			"Content-Type": "application/json",
+			Accept: "application/json",
+			Authorization: `Bearer ${token}`,
+		},
+		body: JSON.stringify(home),
+	})
+		.then((response) => {
+			return response.json();
+		})
+		.catch((err) => console.log(err));
+};
+
+export const getHomes = (token) => {
+	return fetch(`${process.env.REACT_APP_API_URL}/heroes`, {
+		method: "GET",
+		headers: {
+			// content type?
+			"Content-Type": "application/json",
+			Accept: "application/json",
+			Authorization: `Bearer ${token}`,
+		},
+	})
+		.then((response) => {
+			return response.json();
+		})
+		.catch((err) => console.log(err));
+};
+
+export const createInfo = (userId, token, info) => {
+	return fetch(`${process.env.REACT_APP_API_URL}/info/create/${userId}`, {
+		method: "POST",
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/json",
+			Authorization: `Bearer ${token}`,
+		},
+		body: JSON.stringify(info),
+	})
+		.then((response) => {
+			return response.json();
+		})
+		.catch((err) => {
+			console.log(err);
+		});
+};
+
+export const updateInfo = (infoId, userId, token, info) => {
+	return fetch(`${process.env.REACT_APP_API_URL}/info/${infoId}/${userId}`, {
+		method: "PUT",
+		headers: {
+			// content type?
+			"Content-Type": "application/json",
+			Accept: "application/json",
+			Authorization: `Bearer ${token}`,
+		},
+		body: JSON.stringify(info),
+	})
+		.then((response) => {
+			return response.json();
+		})
+		.catch((err) => console.log(err));
+};
+
+export const getInfo = (token) => {
+	return fetch(`${process.env.REACT_APP_API_URL}/info`, {
 		method: "GET",
 		headers: {
 			// content type?

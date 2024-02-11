@@ -147,7 +147,7 @@ export const userlike = (userId, token, productId) => {
 			"Content-Type": "application/json",
 			Authorization: `Bearer ${token}`,
 		},
-		body: JSON.stringify({userId, productId}),
+		body: JSON.stringify({ userId, productId }),
 	})
 		.then((response) => {
 			return response.json();
@@ -163,7 +163,7 @@ export const userunlike = (userId, token, productId) => {
 			"Content-Type": "application/json",
 			Authorization: `Bearer ${token}`,
 		},
-		body: JSON.stringify({userId, productId}),
+		body: JSON.stringify({ userId, productId }),
 	})
 		.then((response) => {
 			return response.json();
@@ -192,7 +192,7 @@ export const productStar = (productId, star, token, email, userId) => {
 				"Content-Type": "application/json",
 				Authorization: `Bearer ${token}`,
 			},
-			body: JSON.stringify({productId, star, email, userId}),
+			body: JSON.stringify({ productId, star, email, userId }),
 		}
 	)
 		.then((response) => {
@@ -209,7 +209,7 @@ export const comment = (userId, token, productId, comment, commentsPhotos) => {
 			"Content-Type": "application/json",
 			Authorization: `Bearer ${token}`,
 		},
-		body: JSON.stringify({userId, productId, comment, commentsPhotos}),
+		body: JSON.stringify({ userId, productId, comment, commentsPhotos }),
 	})
 		.then((response) => {
 			return response.json();
@@ -225,7 +225,7 @@ export const uncomment = (userId, token, productId, comment) => {
 			"Content-Type": "application/json",
 			Authorization: `Bearer ${token}`,
 		},
-		body: JSON.stringify({userId, productId, comment}),
+		body: JSON.stringify({ userId, productId, comment }),
 	})
 		.then((response) => {
 			return response.json();
@@ -241,7 +241,7 @@ export const like = (userId, token, productId) => {
 			"Content-Type": "application/json",
 			Authorization: `Bearer ${token}`,
 		},
-		body: JSON.stringify({userId, productId}),
+		body: JSON.stringify({ userId, productId }),
 	})
 		.then((response) => {
 			return response.json();
@@ -257,7 +257,7 @@ export const unlike = (userId, token, productId) => {
 			"Content-Type": "application/json",
 			Authorization: `Bearer ${token}`,
 		},
-		body: JSON.stringify({userId, productId}),
+		body: JSON.stringify({ userId, productId }),
 	})
 		.then((response) => {
 			return response.json();
@@ -272,7 +272,7 @@ export const views = (productId) => {
 			Accept: "application/json",
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify({productId}),
+		body: JSON.stringify({ productId }),
 	})
 		.then((response) => {
 			return response.json();
@@ -287,7 +287,7 @@ export const viewsCounter = (productId, counter) => {
 			Accept: "application/json",
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify({productId, counter}),
+		body: JSON.stringify({ productId, counter }),
 	})
 		.then((response) => {
 			return response.json();
@@ -657,7 +657,7 @@ export const createOrder = (token, createOrderData, userId) => {
 				"Content-Type": "application/json",
 				Authorization: `Bearer ${token}`,
 			},
-			body: JSON.stringify({order: createOrderData}),
+			body: JSON.stringify({ order: createOrderData }),
 		}
 	)
 		.then((response) => {
@@ -740,7 +740,7 @@ export const generatingTokenPaymob = (
 	//generate token
 	const options = {
 		method: "POST",
-		headers: {accept: "application/json", "content-type": "application/json"},
+		headers: { accept: "application/json", "content-type": "application/json" },
 		body: JSON.stringify({
 			api_key: process.env.REACT_APP_API_KEY,
 		}),
@@ -919,6 +919,24 @@ export const getAbouts = (token) => {
 			Authorization: `Bearer ${token}`,
 		},
 	})
+		.then((response) => {
+			return response.json();
+		})
+		.catch((err) => console.log(err));
+};
+
+export const getPaginatedProducts = (page, records, filters) => {
+	return fetch(
+		`${process.env.REACT_APP_API_URL}/products/list/${page}/${records}/${filters}`,
+		{
+			method: "GET",
+			headers: {
+				// content type?
+				"Content-Type": "application/json",
+				Accept: "application/json",
+			},
+		}
+	)
 		.then((response) => {
 			return response.json();
 		})

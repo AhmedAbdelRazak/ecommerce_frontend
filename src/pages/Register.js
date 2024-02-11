@@ -1,7 +1,7 @@
 /** @format */
 // eslint-disable-next-line
-import React, {useState} from "react";
-import {Link, Redirect} from "react-router-dom";
+import React, { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
 import styled from "styled-components";
 import {
 	signup,
@@ -12,7 +12,7 @@ import {
 } from "../auth";
 // eslint-disable-next-line
 import Google from "../auth/Google";
-import {ToastContainer, toast} from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 // eslint-disable-next-line
 import Helmet from "react-helmet";
@@ -29,12 +29,13 @@ const Register = () => {
 		loading: false,
 	});
 
-	const {name, email, password, password2, success, misMatch, loading} = values;
+	const { name, email, password, password2, success, misMatch, loading } =
+		values;
 
 	console.log(success);
 
 	// eslint-disable-next-line
-	const {user} = isAuthenticated();
+	const { user } = isAuthenticated();
 	const handleChange = (name) => (event) => {
 		setValues({
 			...values,
@@ -48,9 +49,9 @@ const Register = () => {
 
 	// eslint-disable-next-line
 	const informParent = (response) => {
-		setValues({...values, error: false, loading: true});
+		setValues({ ...values, error: false, loading: true });
 		if (response.error) {
-			setValues({...values, error: response.error, loading: false});
+			setValues({ ...values, error: response.error, loading: false });
 			toast.error(response.error);
 		} else {
 			authenticate2(response, () => {
@@ -82,7 +83,7 @@ const Register = () => {
 			});
 			return <React.Fragment>{toast.error(MisMatchError)}</React.Fragment>;
 		} else {
-			setValues({...values, error: false, misMatch: false});
+			setValues({ ...values, error: false, misMatch: false });
 			signup({
 				name,
 				email,
@@ -92,12 +93,12 @@ const Register = () => {
 			}).then((data) => {
 				console.log(data);
 				if (data.error || data.misMatch) {
-					setValues({...values, error: data.error, success: false});
+					setValues({ ...values, error: data.error, success: false });
 					toast.error(data.error);
 				} else
-					signin({email, password}).then((data) => {
+					signin({ email, password }).then((data) => {
 						if (data.error) {
-							setValues({...values, error: data.error, loading: false});
+							setValues({ ...values, error: data.error, loading: false });
 						} else {
 							authenticate(data, () => {
 								setValues({
@@ -135,8 +136,8 @@ const Register = () => {
 						</h1>
 						{/* <Google informParent={informParent} /> */}
 						<form onSubmit={clickSubmit}>
-							<div className='form-group ' style={{marginTop: "25px"}}>
-								<label htmlFor='name' style={{fontWeight: "bold"}}>
+							<div className='form-group ' style={{ marginTop: "25px" }}>
+								<label htmlFor='name' style={{ fontWeight: "bold" }}>
 									Full Name
 								</label>
 								<input
@@ -147,8 +148,8 @@ const Register = () => {
 									onChange={handleChange("name")}
 								/>
 							</div>
-							<div className='form-group ' style={{marginTop: "25px"}}>
-								<label htmlFor='email' style={{fontWeight: "bold"}}>
+							<div className='form-group ' style={{ marginTop: "25px" }}>
+								<label htmlFor='email' style={{ fontWeight: "bold" }}>
 									Phone
 								</label>
 								<input
@@ -160,8 +161,8 @@ const Register = () => {
 								/>
 							</div>
 
-							<div className='form-group ' style={{marginTop: "25px"}}>
-								<label htmlFor='password' style={{fontWeight: "bold"}}>
+							<div className='form-group ' style={{ marginTop: "25px" }}>
+								<label htmlFor='password' style={{ fontWeight: "bold" }}>
 									Password
 								</label>
 								<input
@@ -172,8 +173,8 @@ const Register = () => {
 									onChange={handleChange("password")}
 								/>
 							</div>
-							<div className='form-group ' style={{marginTop: "25px"}}>
-								<label htmlFor='password2' style={{fontWeight: "bold"}}>
+							<div className='form-group ' style={{ marginTop: "25px" }}>
+								<label htmlFor='password2' style={{ fontWeight: "bold" }}>
 									Confirm Password
 								</label>
 								<input
@@ -220,18 +221,14 @@ const Register = () => {
 
 	const MisMatchError = "Passwords Don't Match, Please Try Again!!";
 
-	
-
-	
-
 	return (
 		<WholeSignup>
 			<Helmet>
 				<meta charSet='utf-8' />
-				<title>Next Day Online Shop | Account Register</title>
+				<title>JORI Online Shop | Account Register</title>
 				<meta
 					name='description'
-					content='Next Day Shop Platform Developed By https://infinite-apps.com'
+					content='JORI Shop Platform Developed By https://infinite-apps.com'
 				/>
 				<link rel='canonical' href='http://infinite-apps.com' />
 			</Helmet>

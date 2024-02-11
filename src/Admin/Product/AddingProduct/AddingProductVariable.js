@@ -51,7 +51,7 @@ const AddingProductVariable = ({
 	const ColorsImageUpload = (e, c) => {
 		// console.log(e.target.files, "From Upload Function");
 		let pickedAttribute = productAttributesFinal.filter(
-			(i) => i.color === c,
+			(i) => i.color === c
 		)[0];
 
 		let files = e.target.files;
@@ -81,7 +81,7 @@ const AddingProductVariable = ({
 								console.log("CLOUDINARY UPLOAD ERR", err);
 							});
 					},
-					"base64",
+					"base64"
 				);
 			}
 
@@ -216,7 +216,7 @@ const AddingProductVariable = ({
 					headers: {
 						Authorization: `Bearer ${token}`,
 					},
-				},
+				}
 			)
 			.then((res) => {
 				// eslint-disable-next-line
@@ -240,7 +240,8 @@ const AddingProductVariable = ({
 				<div
 					className='col-3 variableLinksItem '
 					onClick={() => setClickedVariableLink("SizesColorsImages")}
-					style={isActive2("SizesColorsImages", clickedVariableLink)}>
+					style={isActive2("SizesColorsImages", clickedVariableLink)}
+				>
 					Add Sizes, Colors And Images
 				</div>
 				{productAttributes.length > 0 && variablesSubmit ? (
@@ -248,7 +249,8 @@ const AddingProductVariable = ({
 						<div
 							className='col-3 variableLinksItem '
 							onClick={() => setClickedVariableLink("VariableSkus")}
-							style={isActive2("VariableSkus", clickedVariableLink)}>
+							style={isActive2("VariableSkus", clickedVariableLink)}
+						>
 							Add Variables SKUs
 						</div>
 						<div
@@ -256,13 +258,15 @@ const AddingProductVariable = ({
 							onClick={() => {
 								setClickedVariableLink("StockLevel");
 							}}
-							style={isActive2("StockLevel", clickedVariableLink)}>
+							style={isActive2("StockLevel", clickedVariableLink)}
+						>
 							Add Stock Level
 						</div>
 						<div
 							className='col-3 variableLinksItem '
 							onClick={() => setClickedVariableLink("ProductPrices")}
-							style={isActive2("ProductPrices", clickedVariableLink)}>
+							style={isActive2("ProductPrices", clickedVariableLink)}
+						>
 							Add Product Prices
 						</div>
 					</>
@@ -272,7 +276,8 @@ const AddingProductVariable = ({
 			<div className='form-group mt-4 '>
 				<label
 					className='text-muted'
-					style={{ fontWeight: "bold", fontSize: "13px" }}>
+					style={{ fontWeight: "bold", fontSize: "13px" }}
+				>
 					Remove Variables
 				</label>
 				<input
@@ -295,14 +300,16 @@ const AddingProductVariable = ({
 							style={{ width: "100%" }}
 							placeholder='Please Select Sizes'
 							value={chosenSizes}
-							onChange={(value) => setChosenSizes(value)}>
+							onChange={(value) => setChosenSizes(value)}
+						>
 							{allSizes &&
 								allSizes.map((ss, iii) => {
 									return (
 										<Option
 											style={{ textTransform: "uppercase" }}
 											key={iii}
-											value={ss.size}>
+											value={ss.size}
+										>
 											{ss.size}
 										</Option>
 									);
@@ -318,14 +325,16 @@ const AddingProductVariable = ({
 									value={chosenColors}
 									onChange={(value) => {
 										setChosenColors(value);
-									}}>
+									}}
+								>
 									{allColors &&
 										allColors.map((c, ii) => {
 											return (
 												<Option
 													style={{ textTransform: "capitalize" }}
 													key={ii}
-													value={c.hexa}>
+													value={c.hexa}
+												>
 													{c.color}
 												</Option>
 											);
@@ -337,7 +346,8 @@ const AddingProductVariable = ({
 										onClick={(e) => {
 											e.preventDefault();
 											setVariablesSubmit(true);
-										}}>
+										}}
+									>
 										Submit Variables
 									</button>
 								) : null}
@@ -353,7 +363,8 @@ const AddingProductVariable = ({
 							fontSize: "1.2rem",
 							fontWeight: "bold",
 							color: "#0053a0",
-						}}>
+						}}
+					>
 						Images Are Being Loaded....
 					</div>
 				) : null}
@@ -387,7 +398,8 @@ const AddingProductVariable = ({
 										e.preventDefault();
 										setClickedVariableLink("VariableSkus");
 										window.scrollTo({ top: 0, behavior: "smooth" });
-									}}>
+									}}
+								>
 									Next: Add Variables SKU's
 								</button>
 							</div>
@@ -405,7 +417,8 @@ const AddingProductVariable = ({
 											<div className='form-group col-md-6 mx-auto' key={i}>
 												<label
 													className='text-muted'
-													style={{ fontWeight: "bold", fontSize: "17px" }}>
+													style={{ fontWeight: "bold", fontSize: "17px" }}
+												>
 													Product Stock Level (Color:{" "}
 													<span style={{ color: "black" }}>
 														{allColors &&
@@ -434,7 +447,8 @@ const AddingProductVariable = ({
 								onClick={(e) => {
 									e.preventDefault();
 									setClickedVariableLink("ProductPrices");
-								}}>
+								}}
+							>
 								Next: Add Product Prices
 							</button>
 						) : null}
@@ -452,7 +466,8 @@ const AddingProductVariable = ({
 												<div className='form-group col-md-4 mx-auto'>
 													<label
 														className='text-muted'
-														style={{ fontWeight: "bold", fontSize: "13px" }}>
+														style={{ fontWeight: "bold", fontSize: "13px" }}
+													>
 														Product Manufacturing Price (Color:{" "}
 														<span style={{ color: "black" }}>
 															{allColors &&
@@ -474,7 +489,8 @@ const AddingProductVariable = ({
 												<div className='form-group col-md-4 mx-auto'>
 													<label
 														className='text-muted'
-														style={{ fontWeight: "bold", fontSize: "13px" }}>
+														style={{ fontWeight: "bold", fontSize: "13px" }}
+													>
 														Product Retailer Price (Color:{" "}
 														<span style={{ color: "black" }}>
 															{allColors &&
@@ -496,7 +512,8 @@ const AddingProductVariable = ({
 												<div className='form-group col-md-4 mx-auto'>
 													<label
 														className='text-muted'
-														style={{ fontWeight: "bold", fontSize: "13px" }}>
+														style={{ fontWeight: "bold", fontSize: "13px" }}
+													>
 														Product Price After Discount (Color:{" "}
 														<span style={{ color: "black" }}>
 															{allColors &&
@@ -519,7 +536,8 @@ const AddingProductVariable = ({
 												<div className='form-group col-md-5 mx-auto'>
 													<label
 														className='text-muted'
-														style={{ fontWeight: "bold", fontSize: "13px" }}>
+														style={{ fontWeight: "bold", fontSize: "13px" }}
+													>
 														Whole Sale Price (Color:{" "}
 														<span style={{ color: "black" }}>
 															{allColors &&
@@ -542,7 +560,8 @@ const AddingProductVariable = ({
 												<div className='form-group col-md-5 mx-auto'>
 													<label
 														className='text-muted'
-														style={{ fontWeight: "bold", fontSize: "13px" }}>
+														style={{ fontWeight: "bold", fontSize: "13px" }}
+													>
 														Dropshipping Price (Color:{" "}
 														<span style={{ color: "black" }}>
 															{allColors &&
@@ -572,7 +591,8 @@ const AddingProductVariable = ({
 								e.preventDefault();
 								setClickedLink("ExtraOptions");
 								window.scrollTo({ top: 0, behavior: "smooth" });
-							}}>
+							}}
+						>
 							Next: Add Product Extra Options
 						</button>
 					</>
@@ -589,7 +609,8 @@ const AddingProductVariable = ({
 												<div className='form-group col-md-6 mx-auto'>
 													<label
 														className='text-muted'
-														style={{ fontWeight: "bold", fontSize: "17px" }}>
+														style={{ fontWeight: "bold", fontSize: "17px" }}
+													>
 														Variable SKU (Color:{" "}
 														<span style={{ color: "black" }}>
 															{allColors &&
@@ -620,7 +641,8 @@ const AddingProductVariable = ({
 									onClick={(e) => {
 										e.preventDefault();
 										setClickedVariableLink("StockLevel");
-									}}>
+									}}
+								>
 									Next: Add Stock Level
 								</button>
 							) : null}

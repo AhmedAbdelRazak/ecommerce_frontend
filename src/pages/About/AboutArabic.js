@@ -25,13 +25,11 @@ const AboutArabic = () => {
 		// eslint-disable-next-line
 	}, []);
 
-	
-
 	return (
 		<AboutPageWrapper dir='rtl'>
 			<Helmet>
 				<meta charSet='utf-8' />
-				<title>Next Day Online Shop | About Us</title>
+				<title>JORI Online Shop | About Us</title>
 				<meta name='description' content='Ace Online Store' />
 				<link rel='icon' href='gq_frontend\src\GeneralImgs\favicon.ico' />
 				<link rel='canonical' href='https://acesportive.com/about' />

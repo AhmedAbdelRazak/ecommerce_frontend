@@ -1,21 +1,19 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-
-// import { isAuthenticated, getSingleUser } from "../../auth/index";
-import styled from "styled-components";
 // eslint-disable-next-line
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { getAllHeros } from "../../apiCore";
+import { getHomes } from "../../Admin/apiAdmin";
 
-const HeroComponent3 = () => {
+const Z1HeroComponent = () => {
 	const [homePage, setHomePage] = useState({});
 
 	const gettingAllHomes = () => {
-		getAllHeros().then((data) => {
+		getHomes().then((data) => {
 			if (data.error) {
 				console.log(data.error);
 			} else {
@@ -27,13 +25,9 @@ const HeroComponent3 = () => {
 	useEffect(() => {
 		gettingAllHomes();
 		localStorage.removeItem("Cleared");
-		return () => {
-			setHomePage([]);
-		};
 		// eslint-disable-next-line
 	}, []);
 
-	// eslint-disable-next-line
 	const settingsHero = {
 		dots: true,
 		infinite: true,
@@ -46,73 +40,102 @@ const HeroComponent3 = () => {
 		pauseOnHover: true,
 		adaptiveHeight: true,
 	};
+
 	return (
-		<HeroComponent3Wrapper className='mx-auto text-center mt-5'>
-			{homePage && homePage.thumbnail3 && homePage.thumbnail3[0] && (
-				<div className='heroPicMain deskTopBanner'>
-					{/* <h3
-						className='mx-auto text-center'
-						style={{ fontWeight: "bolder", fontSize: "1.4rem" }}>
-						Main Section
-					</h3> */}
-					<Link
-						to='/our-products'
-						onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-						<img
-							src={
+		<HeroComponentWrapper className='mx-auto text-center'>
+			<Slider {...settingsHero}>
+				{homePage && homePage.thumbnail && homePage.thumbnail[0] && (
+					<Banner1>
+						<ImgB1
+							loading='lazy'
+							srcSet={
+								homePage &&
+								homePage.thumbnail &&
+								homePage.thumbnail[0] &&
+								homePage.thumbnail[0].url
+							}
+						/>
+						<ContentB1 />
+					</Banner1>
+				)}
+
+				{homePage && homePage.thumbnail2 && homePage.thumbnail2[0] && (
+					<Banner1>
+						<ImgB1
+							loading='lazy'
+							srcSet={
+								homePage &&
+								homePage.thumbnail2 &&
+								homePage.thumbnail2[0] &&
+								homePage.thumbnail2[0].url
+							}
+						/>
+						<ContentB1 />
+					</Banner1>
+				)}
+
+				{homePage && homePage.thumbnail3 && homePage.thumbnail3[0] && (
+					<Banner1>
+						<ImgB1
+							loading='lazy'
+							srcSet={
 								homePage &&
 								homePage.thumbnail3 &&
 								homePage.thumbnail3[0] &&
-								homePage.thumbnail3[0].images &&
-								homePage.thumbnail3[0].images[0] &&
-								homePage.thumbnail3[0].images[0].url
+								homePage.thumbnail3[0].url
 							}
-							alt='ShopPhoto'
-							className='mt-3'
 						/>
-					</Link>
-				</div>
-			)}
-
-			{homePage &&
-				homePage.thumbnail3_Phone &&
-				homePage.thumbnail3_Phone[0] && (
-					<div className=' phoneBanner'>
-						<Link
-							to='/our-products'
-							onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-							<img
-								src={
-									homePage &&
-									homePage.thumbnail3_Phone &&
-									homePage.thumbnail3_Phone[0] &&
-									homePage.thumbnail3_Phone[0].images &&
-									homePage.thumbnail3_Phone[0].images[0] &&
-									homePage.thumbnail3_Phone[0].images[0].url
-								}
-								alt='ShopPhoto'
-								className='mt-3'
-							/>
-						</Link>
-					</div>
+						<ContentB1 />
+					</Banner1>
 				)}
-		</HeroComponent3Wrapper>
+			</Slider>
+		</HeroComponentWrapper>
 	);
 };
 
-export default HeroComponent3;
+export default Z1HeroComponent;
 
-const HeroComponent3Wrapper = styled.div`
+// Banner1 style
+
+const Banner1 = styled.div`
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	position: relative;
+	display: flex;
+	aspect-ratio: 1.69;
+	margin-top: 17px;
+	margin-left: 17px;
+	margin-right: 17px;
+	max-width: 100%;
+	align-items: end;
+	padding: 50px 49px 19px;
+`;
+
+const ImgB1 = styled.img`
+	position: absolute;
+	inset: 0;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+`;
+
+const ContentB1 = styled.div`
+	position: relative;
+	border-radius: 23px;
+	background-color: #fff;
+	display: flex;
+	margin-top: 126px;
+	width: 15px;
+	height: 5px;
+	flex-direction: column;
+`;
+
+const HeroComponentWrapper = styled.div`
 	text-align: center;
 	background-image: linear-gradient(white, white);
-
-	.heroPicMain img {
-		width: 100%;
-		text-align: center;
-		margin: auto;
-		/* object-fit: cover !important; */
-		/* border-radius: 5%; */
-	}
+	margin-bottom: 50px;
 
 	.slick-arrow {
 		/* background-color: black; */
@@ -152,30 +175,22 @@ const HeroComponent3Wrapper = styled.div`
 		margin-top: 10px;
 	}
 
-	.deskTopBanner img {
-		display: block;
-	}
-
-	.phoneBanner img {
-		display: none;
-	}
-
 	@media (max-width: 1000px) {
 		.heroPicMain {
-			width: 100%;
+			height: 100%;
+			width: 110vw;
 			opacity: 1;
 			align: center;
 			/* border-radius: 5%; */
 		}
 
-		.deskTopBanner img {
-			display: none;
-		}
-
-		.phoneBanner img {
-			width: 100% !important;
-			/* object-fit: cover !important; */
-			display: block;
+		.heroPicMain img {
+			width: 100%; /* width of container */
+			height: 300px; /* height of container */
+			object-fit: cover;
+			/* border: 5px solid black; */
+			margin-right: 500px;
+			border-radius: 3%;
 		}
 
 		.slick-next {

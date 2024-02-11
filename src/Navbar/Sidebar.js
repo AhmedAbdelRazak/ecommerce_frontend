@@ -1,10 +1,10 @@
 /** @format */
 
-import React, {Fragment, useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import React, { Fragment, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import {isAuthenticated, signout} from "../auth";
-import {useCartContext} from "../Checkout/cart_context";
+import { isAuthenticated, signout } from "../auth";
+import { useCartContext } from "../Checkout/cart_context";
 import MostViewedSideBar from "./MostViewedSideBar";
 
 const isActive = (history, path, gendersLength) => {
@@ -27,6 +27,7 @@ const isActive = (history, path, gendersLength) => {
 const isActive2 = (history, allGenders) => {
 	const genderIndex =
 		allGenders &&
+		allGenders[0] &&
 		allGenders.map((i) => i.genderName).indexOf(history.genderName);
 	if (history && history.genderName && genderIndex >= 0) {
 		return {
@@ -54,13 +55,13 @@ const Sidebar = ({
 	const [pageScrolled, setPageScrolled] = useState(false);
 	const [offset, setOffset] = useState(0);
 
-	const {openSidebar2, closeSidebar2, isSidebarOpen2} = useCartContext();
+	const { openSidebar2, closeSidebar2, isSidebarOpen2 } = useCartContext();
 
 	useEffect(() => {
 		const onScroll = () => setOffset(window.pageYOffset);
 		// clean up code
 		window.removeEventListener("scroll", onScroll);
-		window.addEventListener("scroll", onScroll, {passive: true});
+		window.addEventListener("scroll", onScroll, { passive: true });
 		if (window.pageYOffset > 0) {
 			setPageScrolled(true);
 		} else {
@@ -81,7 +82,7 @@ const Sidebar = ({
 					<li
 						className='mt-3 genderWrapper'
 						onClick={() => {
-							window.scrollTo({top: 0, behavior: "smooth"});
+							window.scrollTo({ top: 0, behavior: "smooth" });
 						}}
 					>
 						<div
@@ -147,7 +148,7 @@ const Sidebar = ({
 					<li
 						className='mt-3'
 						onClick={() => {
-							window.scrollTo({top: 0, behavior: "smooth"});
+							window.scrollTo({ top: 0, behavior: "smooth" });
 						}}
 					>
 						<Link
@@ -208,7 +209,7 @@ const Sidebar = ({
 					<li
 						className='mt-3'
 						onClick={() => {
-							window.scrollTo({top: 0, behavior: "smooth"});
+							window.scrollTo({ top: 0, behavior: "smooth" });
 						}}
 					>
 						<Link
@@ -230,7 +231,7 @@ const Sidebar = ({
 					</li>
 					<li
 						onClick={() => {
-							window.scrollTo({top: 0, behavior: "smooth"});
+							window.scrollTo({ top: 0, behavior: "smooth" });
 						}}
 					>
 						<Link
@@ -253,7 +254,7 @@ const Sidebar = ({
 					</li>
 					<li
 						onClick={() => {
-							window.scrollTo({top: 0, behavior: "smooth"});
+							window.scrollTo({ top: 0, behavior: "smooth" });
 						}}
 					>
 						<Link
@@ -275,7 +276,7 @@ const Sidebar = ({
 					</li>
 					<li
 						onClick={() => {
-							window.scrollTo({top: 0, behavior: "smooth"});
+							window.scrollTo({ top: 0, behavior: "smooth" });
 						}}
 					>
 						<Link
@@ -300,7 +301,7 @@ const Sidebar = ({
 						<li
 							className='nav-item mt-3'
 							onClick={() => {
-								window.scrollTo({top: 0, behavior: "smooth"});
+								window.scrollTo({ top: 0, behavior: "smooth" });
 							}}
 						>
 							<Link
@@ -318,7 +319,7 @@ const Sidebar = ({
 							<li
 								className='nav-item mt-3'
 								onClick={() => {
-									window.scrollTo({top: 0, behavior: "smooth"});
+									window.scrollTo({ top: 0, behavior: "smooth" });
 								}}
 							>
 								<Link
@@ -332,7 +333,7 @@ const Sidebar = ({
 							<li
 								className='nav-item mt-3'
 								onClick={() => {
-									window.scrollTo({top: 0, behavior: "smooth"});
+									window.scrollTo({ top: 0, behavior: "smooth" });
 								}}
 							>
 								<Link
@@ -351,7 +352,7 @@ const Sidebar = ({
 							<li
 								className='nav-item mt-3'
 								onClick={() => {
-									window.scrollTo({top: 0, behavior: "smooth"});
+									window.scrollTo({ top: 0, behavior: "smooth" });
 								}}
 							>
 								<Link
@@ -366,7 +367,7 @@ const Sidebar = ({
 							<li
 								className='nav-item mt-3'
 								onClick={() => {
-									window.scrollTo({top: 0, behavior: "smooth"});
+									window.scrollTo({ top: 0, behavior: "smooth" });
 								}}
 							>
 								<Link
@@ -384,7 +385,7 @@ const Sidebar = ({
 						<li
 							className='nav-item'
 							onClick={() => {
-								window.scrollTo({top: 0, behavior: "smooth"});
+								window.scrollTo({ top: 0, behavior: "smooth" });
 							}}
 						>
 							<span>

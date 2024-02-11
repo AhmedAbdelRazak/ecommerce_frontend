@@ -15,6 +15,7 @@ import {
 	getParents,
 	getProducts,
 	getSubCategories,
+	getVendors,
 } from "../../apiAdmin";
 import BasicDataForm from "./BasicDataForm";
 import { isAuthenticated } from "../../../auth";
@@ -95,6 +96,8 @@ const AddProduct = () => {
 	const [inheritPrice, setInheritPrice] = useState(false);
 	const [inheritParentSKU, setInheritParentSKU] = useState(false);
 	const [allColors, setAllColors] = useState([]);
+	const [allVendors, setAllVendors] = useState([]);
+	const [chosenVendor, setChosenVendor] = useState("");
 
 	let productAttributes = [];
 
@@ -134,6 +137,9 @@ const AddProduct = () => {
 				setInheritPrice={setInheritPrice}
 				inheritParentSKU={inheritParentSKU}
 				setInheritParentSKU={setInheritParentSKU}
+				allVendors={allVendors}
+				setChosenVendor={setChosenVendor}
+				chosenVendor={chosenVendor}
 			/>
 		</React.Fragment>
 	);
@@ -198,6 +204,16 @@ const AddProduct = () => {
 		});
 	};
 
+	const loadAllVendors = () => {
+		getVendors(token).then((data2) => {
+			if (data2.error) {
+				console.log(data2.error);
+			} else {
+				setAllVendors(data2);
+			}
+		});
+	};
+
 	useEffect(() => {
 		gettingAllCategories();
 		gettingAllSubcategories();
@@ -205,6 +221,7 @@ const AddProduct = () => {
 		gettingAllColors();
 		loadAllParent();
 		gettingAllProducts();
+		loadAllVendors();
 		// eslint-disable-next-line
 	}, []);
 
@@ -229,16 +246,37 @@ const AddProduct = () => {
 		setParentName(e.target.value);
 	};
 
+	const handleChangeVendor = (e) => {
+		setChosenVendor(e.target.value);
+	};
+
 	const CategorySubcategoryEntry = () => {
 		return (
 			<form className='formwrapper ml-5 py-4 mt-4' style={{ maxWidth: "80%" }}>
 				<div className='form-group '>
 					<div className=''>
 						<h5 style={{ fontWeight: "bold", fontSize: "1.05rem" }}>
-							Add Category/ Subcategory
+							Please fill in...
 						</h5>
 					</div>
 					<div className='form-group mt-3'>
+						<label>Vendor</label>
+						<select
+							name='chosenVendor'
+							className='form-control'
+							onChange={handleChangeVendor}
+						>
+							<option>Please select</option>
+							{allVendors &&
+								allVendors.length > 0 &&
+								allVendors.map((c) => (
+									<option key={c._id} value={c._id}>
+										{c.vendorName}
+									</option>
+								))}
+						</select>
+					</div>
+					<div className='form-group'>
 						<label>Parent</label>
 						<select
 							name='parentName'
@@ -677,6 +715,10 @@ const AddProduct = () => {
 			return toast.error("Please Add Product Categories & Subcategories");
 		}
 
+		if (!chosenVendor) {
+			return toast.error("Please Add A Vendor To This Product");
+		}
+
 		if (!addVariables) {
 			if (!price || !priceAfterDiscount || !stock) {
 				setClickedLink("AddPrices");
@@ -737,6 +779,7 @@ const AddProduct = () => {
 			Specs_Arabic: "",
 			fitCare: "",
 			fitCare_Arabic: "",
+			belongsTo: chosenVendor,
 		};
 
 		createProduct(user._id, token, values).then((data) => {

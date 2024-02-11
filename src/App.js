@@ -6,6 +6,7 @@ import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "react-quill/dist/quill.snow.css";
 import ReactGA from "react-ga4";
 import ReactPixel from "react-facebook-pixel";
 import Login from "./pages/Login";
@@ -42,10 +43,11 @@ import ParentMain from "./Admin/Parent/ParentMain";
 import AttributesMain from "./Admin/Attributes/AttributesMain";
 import ProductMain from "./Admin/Product/ProductMain";
 import StoreSettingsMain from "./Admin/StoreSettings/StoreSettingsMain";
-import singleparent from  "./pages/singleparent";
-import bukishaproduct from  "./pages/bukishaproduct";
-import cartdesign from  "./pages/cartdesign";
-
+import singleparent from "./pages/singleparent";
+import bukishaproduct from "./pages/bukishaproduct";
+import cartdesign from "./pages/cartdesign";
+import VendorsMain from "./Admin/Vendors/VendorsMain";
+import EditWebsiteMain from "./Admin/EditingWebsite/EditWebsiteMain";
 
 //Admin Management
 
@@ -110,6 +112,7 @@ const App = () => {
 					<NavbarAds />
 				</>
 			) : null}
+
 			{window.location.pathname.includes("admin") ? null : (
 				<>
 					<NavbarTop language={language} setLanguage={setLanguage} />
@@ -135,8 +138,8 @@ const App = () => {
 				<Route path='/return-exchange-policy' exact component={RetExchPolicy} />
 				<Route path='/user/wishlist' exact component={UserWishlist} />
 				<Route path='/signup' exact component={Register} />
-				<Route 
-				path='/our-products'
+				<Route
+					path='/our-products'
 					exact
 					component={() => <ShopPageMain chosenLanguage={language} />}
 				/>
@@ -164,6 +167,11 @@ const App = () => {
 				<AdminRoute path='/admin/attributes' exact component={AttributesMain} />
 				<AdminRoute path='/admin/products' exact component={ProductMain} />
 				<AdminRoute
+					path='/admin/vendor-management'
+					exact
+					component={VendorsMain}
+				/>
+				<AdminRoute
 					path='/admin/store-management'
 					exact
 					component={() => <StoreSettingsMain />}
@@ -172,6 +180,11 @@ const App = () => {
 					path='/admin/subcategories'
 					exact
 					component={SubcategoryMain}
+				/>
+				<AdminRoute
+					path='/admin/website-management'
+					exact
+					component={EditWebsiteMain}
 				/>
 			</Switch>
 

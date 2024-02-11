@@ -61,14 +61,15 @@ const ShippingOptions = () => {
 
 	const gettingAllShippingOptions = () => {
 		getShippingOptions(token).then((data) => {
-			if (data.error) {
+			if (data && data.error) {
 				setError(data.error);
 			} else {
 				setError("");
 				setAllShippingOptions(
-					data.map((carrierName) =>
-						carrierName.carrierName.toLowerCase().replace(/\s/g, "")
-					)
+					data &&
+						data.map((carrierName) =>
+							carrierName.carrierName.toLowerCase().replace(/\s/g, "")
+						)
 				);
 				setAllShippingOptions2(data);
 			}
@@ -81,8 +82,9 @@ const ShippingOptions = () => {
 	}, [carrierName, shippingPrice, carrierName_Arabic]);
 
 	let matchingCarrierName =
+		allShippingOptions &&
 		allShippingOptions.indexOf(carrierName.toLowerCase().replace(/\s/g, "")) !==
-		-1;
+			-1;
 	// console.log(matchingCarrierName, "El Logic");
 	const clickSubmit = (e) => {
 		e.preventDefault();

@@ -1,12 +1,12 @@
 /** @format */
 
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 // import AboutPhoto from "../imgs/traffic-3098747_1920.jpg";
 // import AboutPhoto from "../Navbar/RCHDIGIMP_Logo.jpg";
 import ReactGA from "react-ga4";
 import Helmet from "react-helmet";
-import {getAbouts} from "../../apiCore";
+import { getAbouts } from "../../apiCore";
 
 const About = () => {
 	const [aboutus, setAboutUs] = useState({});
@@ -37,8 +37,8 @@ const About = () => {
 		<AboutPageWrapper>
 			<Helmet>
 				<meta charSet='utf-8' />
-				<title>Next Day Online Shop | About Us</title>
-				<meta name='description' content='Next Day Store' />
+				<title>JORI Online Shop | About Us</title>
+				<meta name='description' content='JORI Store' />
 				<link rel='icon' href='gq_frontend\src\GeneralImgs\favicon.ico' />
 				<link rel='canonical' href='https://nextdayegy.com/about' />
 			</Helmet>
@@ -60,7 +60,7 @@ const About = () => {
 								alt='Powered By infinite-apps.com'
 								width='1728'
 								height='565'
-								style={{marginTop: "0px", objectFit: "cover", padding: "0px"}}
+								style={{ marginTop: "0px", objectFit: "cover", padding: "0px" }}
 							/>
 						</div>
 					) : (
@@ -69,7 +69,7 @@ const About = () => {
 							alt='Powered By infinite-apps.com'
 							width='1728'
 							height='565'
-							style={{marginTop: "0px", objectFit: "cover", padding: "0px"}}
+							style={{ marginTop: "0px", objectFit: "cover", padding: "0px" }}
 							src='https://reydemos.b-cdn.net/london/wp-content/uploads/sites/8/2019/04/our-story-01.jpg'
 						/>
 					)}
@@ -90,7 +90,6 @@ const About = () => {
 				</div>
 			</div>
 		</AboutPageWrapper>
-		
 	);
 };
 

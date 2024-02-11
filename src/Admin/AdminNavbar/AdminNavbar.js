@@ -64,6 +64,13 @@ const items = [
 		<PieChartOutlined />
 	),
 	getItem(
+		<Link to='/admin/vendor-management'>STORES/ VENDORS</Link>,
+		"sub8",
+		<>
+			<TeamOutlined />
+		</>
+	),
+	getItem(
 		<Link to='/admin/parents'>Parent</Link>,
 		"sub20",
 		<>
@@ -102,16 +109,8 @@ const items = [
 	getItem(<Link to='#'>ORDERS</Link>, "sub7", <BankTwoTone />),
 
 	getItem(
-		<Link to='/hotel-management/staff'>STORES</Link>,
-		"sub8",
-		<>
-			<TeamOutlined />
-		</>
-	),
-
-	getItem(
-		<Link to='#'>Website Adjustment</Link>,
-		"sub20",
+		<Link to='/admin/website-management'>Website Adjustment</Link>,
+		"sub21",
 		<>
 			<DollarCircleOutlined />
 		</>
@@ -221,12 +220,12 @@ const AdminNavbar = ({
 											? "sub6"
 											: fromPage === "AddOccasions"
 												? "sub7"
-												: fromPage === "HotelStaff"
+												: fromPage === "Vendors"
 													? "sub8"
 													: fromPage === "StoreSettings"
 														? "sub10"
-														: fromPage === "CouponManagement"
-															? "sub12"
+														: fromPage === "Website"
+															? "sub21"
 															: "sub1"
 				}
 				defaultOpenKeys={[
