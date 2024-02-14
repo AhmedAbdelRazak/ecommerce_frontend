@@ -12,7 +12,7 @@ const Z6Fashion = () => {
 			if (data && data.error) {
 				console.log("Error fetching new arrival products:", data.error);
 			} else {
-				console.log(data.data, "Data.data");
+				// console.log(data.data, "Data.data");
 				if (data && data.data) {
 					setFashionProducts((prevProducts) => [...prevProducts, ...data.data]);
 				}

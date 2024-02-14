@@ -17,7 +17,7 @@ const Z1HeroComponent = () => {
 			if (data.error) {
 				console.log(data.error);
 			} else {
-				setHomePage(data[data.length - 1]);
+				setHomePage(data && data[data.length - 1]);
 			}
 		});
 	};
