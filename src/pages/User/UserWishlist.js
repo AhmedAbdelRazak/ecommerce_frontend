@@ -10,7 +10,7 @@ import {
 	readUser,
 } from "../../apiCore";
 import { isAuthenticated } from "../../auth";
-import CardInHomePage from "../Home/CardInHomePage";
+// import CardInHomePage from "../Home/CardInHomePage";
 // import ReactPixel from "react-facebook-pixel";
 import ReactGA from "react-ga4";
 
@@ -35,7 +35,7 @@ const UserWishlist = () => {
 						console.log(data2.error);
 					} else {
 						var productsLiked = data2.filter(
-							(i) => i.likes.indexOf(data._id) > -1,
+							(i) => i.likes.indexOf(data._id) > -1
 						);
 						setAllProducts(productsLiked);
 					}
@@ -105,8 +105,9 @@ const UserWishlist = () => {
 								allProducts && allProducts.length === 1
 									? "col-md-3"
 									: "grid-container"
-							}>
-							{allProducts &&
+							}
+						>
+							{/* {allProducts &&
 								allProducts.map((product, i) => (
 									<CardInHomePage
 										i={i}
@@ -114,7 +115,7 @@ const UserWishlist = () => {
 										key={i}
 										chosenLanguage={"English"}
 									/>
-								))}
+								))} */}
 						</div>
 
 						<hr />

@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import ReactGA from "react-ga4";
 import { Helmet } from "react-helmet";
-import HeroComponent from "./Z1HeroComponent";
+import Z1HeroComponent from "./Z1HeroComponent";
 import ZSearch from "./Z2Search";
 import Z3Vendors from "./Z3Vendors";
 import Z4NewArrival from "./Z4NewArrival";
@@ -33,7 +33,7 @@ const Home = () => {
 			</Helmet>
 
 			<div>
-				<HeroComponent />
+				<Z1HeroComponent />
 			</div>
 
 			<div>
